@@ -1,0 +1,75 @@
+This Problem can be solved using various methods each with its own complexity
+
+Method 1: 
+
+=> Using Additional Array
+- The concept is to create a new empty array of size N
+- declare a 'iterator' variable which points to N-Kth position in the array
+- Insert the elements into the new array starting from the 'iterator' till the end of the array
+- Then add the remaining elements from 0th index till N-K-1th position to our new array.
+
+Time complexity : O(N)
+Space complexity : O(N)
+
+Sample code :
+void rotateArray(int array[], int k, int n)
+{
+   int iterator = n-k;
+   int newArray = new int[n];
+   for(int i = iterator; i<n; i++){
+       newArray[i] = array[i];
+   }
+   for(int i = 0; i<n-k-1; i++){
+       newArray[i] = array[i];
+   }
+}
+
+
+Method 2: 
+
+=> By reversing the array three times
+-The idea is to perform three reversals in the array
+-First reverse the last k elements in the array
+-Second reverse the first n-k elements in the array
+-Third reverse the whole array once
+
+Note : the reverse method takes linear time to perform reversal by swapping the elements
+Time complexity : O(N)
+Space complexity : O(1)
+
+Sample code :   
+
+  void rotateArray(int array[], int k, int n)
+    {
+        // reverse the last k elements in the array
+        reverse(array, n - k, n - 1);
+ 
+        //reverse the first n-k elements in the array
+        reverse(array, 0, n - k - 1);
+ 
+        //reverse the whole array once
+        reverse(array, 0, n - 1);
+    }
+
+
+Method 3: 
+
+=> By Brute Force
+- The idea is simple , we have to perform rotation k times in the array 
+- in every rotation we rotate the array by one unit
+- this method is not as efficient as the above methods
+
+Sample code :
+
+ void rotate(int array[], int k, int n) {
+    for (int i = 0; i < k; i++) {
+        int last = array[n - 1];
+        for (int i = n - 2; i >= 0; i--) {
+            array[i + 1] = array[i];
+        }
+        array[0] = last;
+    }
+  }
+
+Time complexity : O(N*K)
+Space complexity : O(1)

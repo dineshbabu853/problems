@@ -1,0 +1,70 @@
+
+/**
+ * In this problem we are storing the count of numbers in a hash array
+ * we try to iterate over the numbers in the array and try to print the count
+ * finally we print the count which is stored in the hash array
+ * the edge case of not printing the count twice is being handled so only unique counts will be printed
+ * Time complexity : O(N)
+ * Space complexity : O(N)
+ * N - number of digits in the given number
+ * 
+**/
+
+import java.util.Scanner;
+public class MyClass {
+    public static void main(String args[]) {
+      Scanner sc = new Scanner(System.in);
+      try{
+      int number = sc.nextInt();
+      char array[] = (number+"").toCharArray();
+      int hash[] = new int[10];
+      int length = array.length;
+      int  flag=1;
+      //store the count of numbers in hash array
+      //this loop runs for O(N) time where N is the length of given number
+      for(int itr=0;itr<length;itr++){
+          int tempCount = 1 ;
+          flag=1;
+          while(itr<length-1 && array[itr] == array[itr+1] ){
+              tempCount++;
+              itr++;
+              flag=0;
+              hash[ array[itr] - '0']++;
+          }
+          hash[ array[itr] - '0']++;
+          if(itr == length-1 ) System.out.print("and ");
+          System.out.print(digitToWord(tempCount)+" "+array[itr]+"'s"+" ");
+      }
+      System.out.println();
+      System.out.print("Total : ");
+      for(int itr=0;itr<length;itr++){
+          while(itr<length-1 && array[itr] == array[itr+1] ){
+              itr++;
+          }
+          if(hash[array[itr]-'0'] != -1){
+          if(itr == length-1 ) System.out.print("and ");
+          System.out.print(digitToWord(hash[array[itr]-'0'])+" "+array[itr]+"'s"+" ");
+          hash[array[itr]-'0'] = -1;
+          }
+      }
+      }
+      catch(Exception e){
+          System.out.println("Exception : "+e);
+      }
+    }
+    public static String digitToWord(int digit) {
+    switch(digit) {    
+    case 0: return "Zero";
+    case 1: return "One";
+    case 2: return "Two";
+    case 3: return "Three";
+    case 4: return "Four";
+    case 5: return "Five";
+    case 6: return "Six";
+    case 7: return "Seven";
+    case 8: return "Eight";
+    case 9: return "Nine";
+    }
+    return "";
+    }
+}

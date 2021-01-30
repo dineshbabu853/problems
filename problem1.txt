@@ -55,7 +55,7 @@ public class MyClass {
        * 3 55 6 77 4 
        * Sample Output:
          Age Group ---- Total Number Of People
-            1-10              5
+            1-10              3
             11-20             0
             21-30             0
             31-40             0

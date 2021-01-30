@@ -10,36 +10,8 @@ public class MyClass {
       int countOfPeople[] = new int[10];
       for(int itr=0;itr<numberOfPeople;itr++){
           ages[itr]=sc.nextInt();
-          if(ages[itr] <= 10 ){
-              countOfPeople[0]++;
-          }
-          else if(ages[itr] <= 20 ){
-              countOfPeople[1]++;
-          }
-           else if(ages[itr] <= 30 ){
-              countOfPeople[2]++;
-          }
-           else if(ages[itr] <= 40 ){
-              countOfPeople[3]++;
-          }
-           else if(ages[itr] <= 50 ){
-              countOfPeople[4]++;
-          }
-           else if(ages[itr] <= 60 ){
-              countOfPeople[5]++;
-          }
-           else if(ages[itr] <= 70 ){
-              countOfPeople[6]++;
-          }
-           else if(ages[itr] <= 80 ){
-              countOfPeople[7]++;
-          }
-           else if(ages[itr] <= 90 ){
-              countOfPeople[8]++;
-          }
-           else {
-              countOfPeople[9]++;
-          }
+          int hashedAge = (int)ages[itr]/10;
+          countOfPeople[hashedAge]++;
       }
       
       System.out.println("Age Group ---- Total Number Of People");
